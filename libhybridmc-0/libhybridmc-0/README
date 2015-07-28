@@ -1,0 +1,68 @@
+INFO
+=============================
+Author: Emmanouil Maroudas
+E-mail: emmanouil.maroudas@gmail.com
+
+
+Dependencies (GNU Debian sid)
+=============================
+
+Package      Version - Info
+-----------------------------
+g++           4.9    - GNU C++ compiler
+fenics        1.4    - FEniCS Project, Automated Solution of Differential Equations
+libgsl0ldbl   1.16   - GNU Scientific Library (GSL)
+libgsl0-dev          - GNU Scientific Library (GSL) -- development package
+python-suds   0.4.1  - Lightweight SOAP client for Python
+python-spyne  2.11.0 - Python library for writing and calling soap web service
+python-setuptools    - Python Distutils Enhancements (setuptools compatibility)
+python-lxml          - pythonic binding for the libxml2 and libxslt libraries
+pkg-config    0.28   - manage compile and link flags for libraries
+swig          2.0.12 - Generate scripting interfaces to C/C++ code
+
+OPTIONAL
+-----------------------------
+opencl-headers       - OpenCL (Open Computing Language) header files
+
+
+Config
+=============================
+For OpenCL support, uncomment the OPENCL_SUPPORT variable definition at the
+beginning of the Makefile. A OpenCL runtime and the OpenCL header files must be
+installed on the system.
+
+
+
+Install
+=============================
+make
+[sudo] make install
+
+
+
+Uninstall
+=============================
+[sudo] make uninstall
+
+
+
+Usage and Examples
+=============================
+Note that depending on the system you may need to set the $PYTHONPATH environment variable to contain the install path of FEniCS and the hybridmc library
+
+
+There are some example test files inside the ./examples directory, mainly for the library's Python interface.
+
+./examples/montecarlo
+Contains examples that show how to invoke the Monte Carlo method from a typical problem and compare the result with the deterministic DirichletBC computation.
+
+
+
+./examples/schwarz
+Contains domain definition examples for simple geometries (rectangle,circle,sphere,box) that show how to implement domains with the IterativeSolver domain API. It also contains coordinator files that actually call the Iterative solver, passing a number of domains as parameters.
+Note that the coordinator file merely imports the desirable domain definitions that exist on separate files. Then it creates a local or remote client to solve the imported domains using the IterativeSolver method.
+
+
+
+./examples/server.py
+This file shows how to run a simple server that listens to requests from a specific address:port. You need a running server in order to work with remote clients. The remote server and client communicate using the WSDL language.
